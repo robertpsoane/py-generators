@@ -18,11 +18,18 @@ class PrimeGenerator:
 
     def generateCandidate(self, size):
         # Generating random number of given size.  This is our candidate to be our prime number
-        p = getrandbits(size)
-        p |= (1<<size-1) | 1
-#        if self.repeats == False:
-
-        return p
+        if self.repeats == True:     
+            p = getrandbits(size)
+            p |= (1<<size-1) | 1
+            return p
+        else:
+            unique = False
+            while unique == False:
+                p = getrandbits(size)
+                p |= (1<<size-1) | 1
+                if p in self.primes == False:
+                    unique = True
+            return p
     
     def checkPrime(self, p, n = 256):
         # Tests whether p is prime by applying k tests
