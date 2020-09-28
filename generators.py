@@ -27,7 +27,7 @@ class PrimeGenerator:
             while unique == False:
                 p = getrandbits(size)
                 p |= (1<<size-1) | 1
-                if p in self.primes == False:
+                if (p in self.primes) == False:
                     unique = True
             return p
     
